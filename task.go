@@ -2,7 +2,8 @@ package task
 
 import (
     "context"
-    "fmt"
+    "log"
+    "encoding/json"
    
     "github.com/hibiken/asynq"
 )
