@@ -37,12 +37,12 @@ func NewReminderEmailTask(id int) (*asynq.Task, error) {
 }
 
 func HandleWelcomeEmailTask(ctx context.Context, t *asynq.Task) error {
-    var p emailTaskPayload  
+    var p emailTaskPayload
     if err := json.Unmarshal(t.Payload(), &p); err != nil {
         return err
     }
-    log.Printf(" [*] Send Welcome Email to User %d", p.UserID)
-    return nil
+    log.Printf(" [*] Attempting to Send Welcome Email to User %d...", p.UserID)
+    return fmt.Errorf("could not send email to the user") // <-- Return error 
 }
 
 func HandleReminderEmailTask(ctx context.Context, t *asynq.Task) error {
